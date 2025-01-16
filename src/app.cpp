@@ -8,17 +8,17 @@ float temperature=0;
 float humidity=0;
 float pressure=0;
 
-// Ejecuta el ciclo lógico principal de la aplicación
+// Executes the app main logic loop
 void runApp() {
-    temperature = readTemperature(); // Lee la temperatura del sensor DHT22
-    humidity = readHumidity();         // Lee la humedad del sensor DHT22
+    temperature = readTemperature(); // reads temperature from DHT22 sensor
+    humidity = readHumidity();         // reads humidity from DHT22 sensor
     pressure = readPress();
     if (isnan(temperature) || isnan(humidity)) {
-        Serial.println("Error al leer del sensor DHT!");
+        Serial.println("Error while reading DHT sensor!");
     }
-    mostrarDatos(temperature, humidity, pressure);   // Muestra los datos en el display OLED
+    mostrarDatos(temperature, humidity, pressure);   // Shows data on the OLED display
     Serial.print("Altitude = ");
     Serial.print(readAlt());
     Serial.println(" meters");
-    delay(2000);                          // Espera 2 segundos antes de la próxima actualización
+    delay(2000);                          // Waits 2 seconds before refreshing
 }
