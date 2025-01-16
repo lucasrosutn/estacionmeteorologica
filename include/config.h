@@ -1,11 +1,11 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
-// Pines de conexión
-const int DHT_PIN = 4;         // Pin GPIO donde está conectado el sensor DHT22
-const int OLED_RESET_PIN = -1; // Reset del OLED, -1 si no se usa
+// conection pins
+const int DHT_PIN = 4;         // GPIO pin where the dht22 sensor is connected
+const int OLED_RESET_PIN = -1; // OLED reset, -1 if not in use
 
-// Configuraciones del DHT
-#define DHT_TYPE DHT22          // Tipo de sensor DHT utilizado
+// dht configuration
+#define DHT_TYPE DHT22          // Type of DHT sensor in use
 
 #endif // CONFIG_H

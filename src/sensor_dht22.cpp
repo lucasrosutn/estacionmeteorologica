@@ -9,17 +9,17 @@
 DHT dht(DHT_PIN, DHT_TYPE);
 
 
-// Inicializa el sensor DHT22
+// Initializes DHT22 sensor
 void initSensor() {
     dht.begin();
 }
 
-// Lee la temperatura del sensor DHT22
-float leerTemperatura() {
-    return dht.readTemperature(); // Devuelve la temperatura en grados Celsius
+// Reads temperature from DHT22 sensor
+float readTemperature() {
+    return dht.readTemperature(); // Gives temperature in celcius degrees
 }
 
-// Lee la humedad relativa del sensor DHT22
-float leerHumedad() {
-    return dht.readHumidity(); // Devuelve la humedad relativa en porcentaje
+// Reads relative humidity from DHT22 sensor
+float readHumidity() {
+    return dht.readHumidity(); // Gives relative humidity in %
 }

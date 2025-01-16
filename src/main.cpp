@@ -2,12 +2,12 @@
 #include "setup.h"
 #include "app.h"
 
-// Configuración inicial del programa
+// Initial configuration of the programm
 void setup() {
-    setupSystem(); // Llama a la configuración del sistema
+    setupSystem(); // Calls the system configuration
 }
 
-// Ciclo principal del programa
+// Main programm loop
 void loop() {
-    runApp(); // Ejecuta la lógica principal de la aplicación
+    runApp(); // Executes the main logic of the app
 }

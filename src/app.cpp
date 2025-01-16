@@ -4,19 +4,19 @@
 #include "sensor_bmp180.h"
 
 
-float temperatura=0;
-float humedad=0;
-float presion=0;
+float temperature=0;
+float humidity=0;
+float pressure=0;
 
 // Ejecuta el ciclo lógico principal de la aplicación
 void runApp() {
-    temperatura = readTemp(); // Lee la temperatura del sensor DHT22
-    humedad = leerHumedad();         // Lee la humedad del sensor DHT22
-    presion = readPress();
-    if (isnan(temperatura) || isnan(humedad)) {
+    temperature = readTemperature(); // Lee la temperatura del sensor DHT22
+    humidity = readHumidity();         // Lee la humedad del sensor DHT22
+    pressure = readPress();
+    if (isnan(temperature) || isnan(humidity)) {
         Serial.println("Error al leer del sensor DHT!");
     }
-    mostrarDatos(temperatura, humedad, presion);   // Muestra los datos en el display OLED
+    mostrarDatos(temperature, humidity, pressure);   // Muestra los datos en el display OLED
     Serial.print("Altitude = ");
     Serial.print(readAlt());
     Serial.println(" meters");

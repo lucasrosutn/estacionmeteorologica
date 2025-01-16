@@ -2,7 +2,7 @@
 #include <U8g2lib.h>
 #include <Wire.h>
 
-// Instancia global del display OLED SSH1106
+// Global instance of the display OLED SSH1106
 //U8G2_SH1106_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0, /* reset=*/ U8X8_PIN_NONE, /* SCL=*/ 22, /* SDA=*/ 21);
 U8G2_SSD1306_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0, SCL_PIN, SDA_PIN);
 uint8_t u8log_buffer[U8LOG_WIDTH*U8LOG_HEIGHT];
@@ -31,19 +31,19 @@ void mostrarDatos(float temperatura, float humedad, float presion) {
     u8g2.sendBuffer();
     u8g2.setFont(u8g2_font_spleen6x12_mf);
 
-    // Muestra la temperatura
+    // Shows temperature
     u8g2.setCursor(3, 20);
     u8g2.print("Temp: ");
     u8g2.print(temperatura);
     u8g2.print(" C");
 
-    // Muestra la humedad
+    // Shows humidity
     u8g2.setCursor(3, 40);
     u8g2.print("Hum: ");
     u8g2.print(humedad);
     u8g2.print(" %");
 
-    // Muestra la presión atmosférica
+    // Shows atmospheric pressure
     u8g2.setCursor(3, 60);
     u8g2.print("Pres: ");
     u8g2.print(presion);

@@ -1,7 +1,7 @@
 #ifndef APP_H
 #define APP_H
 
-// Función principal de la aplicación que ejecuta el ciclo lógico
+// Main app function that runs de logic cicle
 void runApp();
 
 #endif // APP_H

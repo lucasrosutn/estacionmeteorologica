@@ -6,13 +6,13 @@
 #include <DHT_U.h>
 #include "config.h"
 
-// Inicializa el sensor DHT22
+// Initializes DHT22 sensor
 void initSensor();
 
-// Lee la temperatura en grados Celsius
-float leerTemperatura();
+// Reads temperature in celcius degrees
+float readTemperature();
 
-// Lee la humedad relativa en porcentaje
-float leerHumedad();
+// Reads relative humidity in %
+float readHumidity();
 
 #endif // SENSOR_H

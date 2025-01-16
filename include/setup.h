@@ -1,7 +1,7 @@
 #ifndef SETUP_H
 #define SETUP_H
 
-// Función para inicializar el sistema
+// Function to inicialize the system
 void setupSystem();
 
 #endif // SETUP_H

@@ -5,12 +5,12 @@
 #include "sensor_bmp180.h"
 
 
-// Configura el sistema inicializando los módulos necesarios
+// Configurates the system initializing the necesary modules 
 void setupSystem() {
-    Serial.begin(19200);    // Inicializa la comunicación serial para debugging
-    initSensor();           // Inicializa el sensor DHT22
-    initDisplay();          // Inicializa el display OLED
+    Serial.begin(19200);    // Initializes serial communication for debugging
+    initSensor();           // Initilizes DHT22 sensor
+    initDisplay();          // Initializes OLED display
     oled88_bienvenida();
-    initBMP180();           // Inicializa el sensor BMP180
+    initBMP180();           // Initializes BMP180 sensor
     
 }
