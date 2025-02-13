@@ -1,6 +1,8 @@
 #include <Arduino.h>
 #include "setup.h"
 #include "app.h"
+#include "wifi_.h"
+
 
 // Initial configuration of the programm
 void setup() {
