@@ -3,6 +3,9 @@
 #include "display.h"
 #include "sensor_bmp180.h"
 #include "wifi_.h"
+#include "publish.h"
+#include "mqtt.h"
+
 
 extern Config config;
 
@@ -24,10 +27,9 @@ void runApp() {
         Serial.println("Error while reading DHT sensor!");
     }
     mostrarDatos(temperature, humidity, pressure);   // Shows data on the OLED display
+    publishTemperature(temperature);
+    publishHumidity(humidity);
     // esto va aca?? el wifi_loop --> entiendo que si BORRAR LUEGO ***************************************************
     wifi_state=wifi_loop();
-    Serial.print("Altitude = ");
-    Serial.print(readAlt());
-    Serial.println(" meters");
     delay(2000);                          // Waits 2 seconds before refreshing
 }

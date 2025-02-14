@@ -17,6 +17,7 @@ void setupSystem() {
     initDisplay();          // Initializes OLED display
     oled88_bienvenida();
     initBMP180();           // Initializes BMP180 sensor
+    setupMQTT();            // Initializes mqtt 
     
  //--Init wifi
     config.ssid="DIDI_RULZ";
@@ -24,6 +25,6 @@ void setupSystem() {
     config.ap_ssid=config.device;
     config.ap_pass="12345678";
     wifi_init(WIFI_AP_STA);
-    // reconnectMQTT();
+    reconnectMQTT();
 
 }

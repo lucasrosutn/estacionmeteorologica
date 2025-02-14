@@ -5,6 +5,7 @@
 #include <Arduino.h>
 #include "config.h"
 #include "wifi_.h"
+#include "mqtt.h"
 
 
 // Main app function that runs de logic cicle
