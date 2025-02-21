@@ -5,6 +5,9 @@
 #include "wifi_.h"
 #include "publish.h"
 #include "mqtt.h"
+#include "config.h"
+#include "led.h"
+
 
 
 extern Config config;
@@ -23,13 +26,17 @@ void runApp() {
     temperature = readTemperature(); // reads temperature from DHT22 sensor
     humidity = readHumidity();         // reads humidity from DHT22 sensor
     pressure = readPress();
+    blink_led(LED_PIN, temperature, humidity);
     if (isnan(temperature) || isnan(humidity)) {
         Serial.println("Error while reading DHT sensor!");
     }
     mostrarDatos(temperature, humidity, pressure);   // Shows data on the OLED display
-    publishTemperature(temperature);
-    publishHumidity(humidity);
+
+    //publishTemperature(temperature);
+    //publishHumidity(humidity);
     // esto va aca?? el wifi_loop --> entiendo que si BORRAR LUEGO ***************************************************
-    wifi_state=wifi_loop();
+    //wifi_state=wifi_loop();
     delay(2000);                          // Waits 2 seconds before refreshing
+
+    
 }

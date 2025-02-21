@@ -23,7 +23,7 @@ void oled88_bienvenida(void){
   u8g2.print("UTN Electronica II");
   u8g2.setFont(u8g2_font_streamline_all_t); //see https://github.com/olikraus/u8g2/wiki/fntgrpstreamline#streamline_all
   u8g2.sendBuffer();
-  delay(5000);
+  delay(2000);
 }
 
 void mostrarDatos(float temperatura, float humedad, float presion) {

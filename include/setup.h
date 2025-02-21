@@ -6,6 +6,7 @@
 #include "config.h"
 #include "wifi_.h"
 #include "mqtt.h"
+#include "led.h"
 
 // Function to inicialize the system
 void setupSystem();

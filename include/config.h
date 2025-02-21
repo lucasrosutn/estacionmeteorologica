@@ -11,8 +11,10 @@ const int OLED_RESET_PIN = -1; // OLED reset, -1 if not in use
 #define DHT_TYPE DHT22          // Type of DHT sensor in use
 
 //--Hardware PINS definitions
-#define ONBOARD_LED_PIN             2
-#define WIFI_LED_PIN                23
+
+//#define ONBOARD_LED_PIN             2
+#define LED_PIN                     2
+
 
 //--Structures
 struct Config {
