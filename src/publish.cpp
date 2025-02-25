@@ -20,4 +20,21 @@ void publishHumidity(float humidity) {
     }
 }
 
+void publishPressure(float pressure) {
+    String payload = String(pressure);
+    if (mqttClient.publish("estacionmeteorologica/pressure", payload.c_str())){
+        Serial.println("Publish successfull");
+    }else{
+        Serial.println("Publish not successfull");
+    }
+}
+
+void publishAltitude(float altitude) {
+    String payload = String(altitude);
+    if (mqttClient.publish("estacionmeteorologica/altitude", payload.c_str())){
+        Serial.println("Publish successfull");
+    }else{
+        Serial.println("Publish not successfull");
+    }
+}
 

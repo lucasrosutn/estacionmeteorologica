@@ -20,12 +20,14 @@ bool wifi_state;
 float temperature=0;
 float humidity=0;
 float pressure=0;
+float altitude=0;
 
 // Executes the app main logic loop
 void runApp() {
     temperature = readTemperature(); // reads temperature from DHT22 sensor
     humidity = readHumidity();         // reads humidity from DHT22 sensor
     pressure = readPress();
+    altitude = readAlt();
     blink_led(LED_PIN, temperature, humidity);
     if (isnan(temperature) || isnan(humidity)) {
         Serial.println("Error while reading DHT sensor!");
@@ -34,6 +36,8 @@ void runApp() {
 
     publishTemperature(temperature);
     publishHumidity(humidity);
+    publishPressure(pressure);
+    publishAltitude(altitude);
     // esto va aca?? el wifi_loop --> entiendo que si BORRAR LUEGO ***************************************************
     wifi_state=wifi_loop();
     delay(2000);                          // Waits 2 seconds before refreshing

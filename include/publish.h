@@ -7,6 +7,8 @@
 
 void publishTemperature(float temperature);
 void publishHumidity(float humidity);
+void publishPressure(float pressure);
+void publishAltitude(float altitude);
 
 
 #endif
