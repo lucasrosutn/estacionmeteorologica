@@ -32,10 +32,10 @@ void runApp() {
     }
     mostrarDatos(temperature, humidity, pressure);   // Shows data on the OLED display
 
-    //publishTemperature(temperature);
-    //publishHumidity(humidity);
+    publishTemperature(temperature);
+    publishHumidity(humidity);
     // esto va aca?? el wifi_loop --> entiendo que si BORRAR LUEGO ***************************************************
-    //wifi_state=wifi_loop();
+    wifi_state=wifi_loop();
     delay(2000);                          // Waits 2 seconds before refreshing
 
     

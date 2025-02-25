@@ -5,6 +5,7 @@
 #include <Arduino.h>
 #include "config.h"
 #include "wifi_.h"
+#include "publish.h"
 #include "mqtt.h"
 #include "led.h"
 
