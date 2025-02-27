@@ -25,48 +25,50 @@ float altitude = 0;
 
 // Executes the app main logic loop
 void runApp() {
-    // Actualiza las lecturas del DHT22 (esto actualiza el buffer de 5 muestras)
-    
+
+    // refreshes the readings of the sensor to update and refresh the buffer
     updateDHT22();
     
-    // Obtiene los valores promediados de temperatura y humedad
+   
+    //gets the promediated values of temoerature and humidity
     temperature = getAverageTemperature();
     humidity = getAverageHumidity();
     
-    // Lee los demás sensores
+    // reads the values from bmp180 sensor, in charge of the values for pressure and altitude
     pressure = readPress();
     altitude = readAlt();
     
-    // Parpadea el LED según los valores leídos
+    // blinks led according to the values
     blink_led(LED_PIN, temperature, humidity);
     
-    // Verifica si se produjo un error en la lectura del DHT22
+    // verifies if an error occured while getting the readings from the dht22 sensor.
     if (isnan(temperature) || isnan(humidity)) {
         Serial.println("Error while reading DHT sensor!");
     }
     
-    // Muestra los datos en el display OLED
+    // shows data on the oled display
     mostrarDatos(temperature, humidity, pressure);
     
-    // Publica los datos
+    // publishes data
     publishTemperature(temperature);
     publishHumidity(humidity);
     publishPressure(pressure);
     publishAltitude(altitude);
 
-    // --- Nuevo código: Control del LED único basado en ambas condiciones ---
-    // El LED se enciende solo si la temperatura y la humedad superan sus respectivos umbrales.
+    
+    //leds will only blink if temp and hum are above their respective threshold levels.
     if (temperature > storage.getTempThreshold() && humidity > storage.getHumThreshold()) {
         digitalWrite(LED_PIN, HIGH);
     } else {
         digitalWrite(LED_PIN, LOW);
     }
-    // --- Fin del nuevo código ---
     
-    // Llama al loop del wifi (si corresponde)
+    // Calls the wifi loop
     wifi_state = wifi_loop();
-    // Verifica si hay nuevos comandos desde el puerto serie
+
+    // checks if there are new commands coming from the serial port
     checkSerialCommands(storage);
 
-    delay(2000); // Espera 2 segundos antes de refrescar
+    //waits 2 seconds before refreshing/running the main loop again
+    delay(2000);
 }

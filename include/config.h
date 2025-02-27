@@ -12,10 +12,10 @@ const int OLED_RESET_PIN = -1; // OLED reset, -1 if not in use
 
 //--Hardware PINS definitions
 
-//#define ONBOARD_LED_PIN             2
+//#define ONBOARD_LED_PIN             2 ***VER SI VA ESTE O EL DE ABAJO***
 #define LED_PIN                     2
-#define LED_Tmax  12   // Ejemplo: Pin para el LED de temperatura
-#define LED_HRmax 13   // Ejemplo: Pin para el LED de humedad
+//#define LED_Tmax  12   // Ejemplo: Pin para el LED de temperatura
+//#define LED_HRmax 13   // Ejemplo: Pin para el LED de humedad
 
 //--Structures
 struct Config {

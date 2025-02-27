@@ -2,12 +2,12 @@
 
 void checkSerialCommands(Storage &storage) {
   if (Serial.available() > 0) {
-    // Lee la línea completa hasta el salto de línea y quita espacios en blanco
+    // reads the whole last line and erases blank spaces
     String command = Serial.readStringUntil('\n');
     command.trim();
 
     if (command.startsWith("T=")) {
-      // Actualiza el umbral de temperatura
+      // refreshes the temperature threshold
       String valueStr = command.substring(2);
       float newTemp = valueStr.toFloat();
       storage.setTempThreshold(newTemp);
@@ -15,7 +15,7 @@ void checkSerialCommands(Storage &storage) {
       Serial.println(newTemp);
     } 
     else if (command.startsWith("H=")) {
-      // Actualiza el umbral de humedad
+      // refreshes relative humidty threshold
       String valueStr = command.substring(2);
       float newHum = valueStr.toFloat();
       storage.setHumThreshold(newHum);
@@ -23,28 +23,28 @@ void checkSerialCommands(Storage &storage) {
       Serial.println(newHum);
     } 
     else if (command.startsWith("S=")) {
-      // Actualiza el SSID
+      // refreshes SSID
       String newSSID = command.substring(2);
       storage.setSSID(newSSID);
       Serial.print("Nuevo SSID: ");
       Serial.println(newSSID);
     } 
     else if (command.startsWith("P=")) {
-      // Actualiza la password
+      // refreshes password
       String newPass = command.substring(2);
       storage.setPassword(newPass);
       Serial.print("Nueva password: ");
       Serial.println(newPass);
     } 
     else if (command.startsWith("B=")) {
-      // Actualiza el broker IP
+      // refreshes broker IP
       String newBroker = command.substring(2);
       storage.setBrokerIP(newBroker);
       Serial.print("Nuevo broker IP: ");
       Serial.println(newBroker);
     } 
     else if (command.equalsIgnoreCase("SHOW")) {
-      // Muestra la configuración actual
+      // shows actual configuration
       Serial.print("Temp Threshold: ");
       Serial.println(storage.getTempThreshold());
       Serial.print("Hum Threshold: ");

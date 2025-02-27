@@ -22,6 +22,6 @@ void welcome(void){
         digitalWrite(led_pin, LOW);
         delay(4000);
     } else {
-        digitalWrite(led_pin, LOW);  // Apaga el LED si no cumple la condición
+        digitalWrite(led_pin, LOW);  // turns off the led if the condition it's not met. 
     }
 }

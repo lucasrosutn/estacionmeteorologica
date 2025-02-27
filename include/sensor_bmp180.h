@@ -4,6 +4,8 @@
 #include <Adafruit_BMP085.h>
 
 void initBMP180();      // Initializes BMP180 sensor
+
+//gets values from the sensor
 float readPress(void);
 float readTemp(void);
 float readAlt(void);

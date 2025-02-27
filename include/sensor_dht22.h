@@ -15,13 +15,13 @@
 // Initializes DHT22 sensor
 void initSensor();
 
-// Actualiza la lectura del sensor (debe llamarse cada 2 segundos)
+// refreshes lecture from the sensor (every 2 seconds)
 void updateDHT22();
 
-// Obtiene la temperatura promedio de las últimas 5 lecturas
+// Gets average temperature from the last 10 readings
 float getAverageTemperature();
 
-// Obtiene la humedad promedio de las últimas 5 lecturas
+// Gets average relative humidity from the last 10 readings
 float getAverageHumidity();
 
 

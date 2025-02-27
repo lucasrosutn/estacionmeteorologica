@@ -7,8 +7,9 @@
 #define U8LOG_WIDTH     16
 #define U8LOG_HEIGHT    8
 
-void initDisplay();
-void oled88_bienvenida(void);
-void mostrarDatos(float temperatura, float humedad, float presion);
+//oled functions
+void initDisplay(); //initializacion
+void oled88_bienvenida(void); //welcome message
+void mostrarDatos(float temperatura, float humedad, float presion); //shows data
 
 #endif

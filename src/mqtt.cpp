@@ -1,9 +1,9 @@
 #include "mqtt.h"
 #include <WiFi.h>
 
-// AJUSTAR MIS DATOS DE SERV USER PASS + TOPIC Y PAYLOAD
+// set of the initial configuration for mqtt
 
-#define MQTT_SERVER "192.168.68.101"     //"192.168.1.5"
+#define MQTT_SERVER "192.168.68.101"     
 #define MQTT_PORT 1883
 #define MQTT_USER "estacionmeteorologica"
 #define MQTT_PASSWORD "estacionmeteorologica"
@@ -39,7 +39,7 @@ void mqttCallback(char* topic, byte* payload, unsigned int length) {
     payload[length] = '\0';
     topic_rpc_req = String((char*)topic);
     msg_rpc_req = String((char*)payload);
-    //--Debug de mensaje de entrada
+    //--Debug message
     Serial.print("[DEBUG RPC] Topico de pregunta:");Serial.println(topic_rpc_req);
     Serial.print("[DEBUG RPC] Mensaje de pregunta:");Serial.println(msg_rpc_req);
 }

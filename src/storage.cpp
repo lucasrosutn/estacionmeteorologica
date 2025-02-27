@@ -1,20 +1,20 @@
 #include "storage.h"
 
 Storage::Storage() {
-  // Constructor vacío; la inicialización se hará en begin()
+  // Empty constructor, initializacion will take place in begin()
 }
 
 void Storage::begin() {
-  // Abrimos el espacio de nombres "config" en modo lectura/escritura
+  // opnes the name space "config" in reading & writing mode
   preferences.begin("config", false);
 }
 
 float Storage::getTempThreshold() {
-  return preferences.getFloat("tempTh", 24.0);  // Valor por defecto: 24°C
+  return preferences.getFloat("tempTh", 24.0);  // default value: 24°C
 }
 
 float Storage::getHumThreshold() {
-  return preferences.getFloat("humTh", 50.0);   // Valor por defecto: 50%
+  return preferences.getFloat("humTh", 50.0);   // default value: 50%
 }
 
 String Storage::getSSID() {

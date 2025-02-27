@@ -19,7 +19,7 @@ public:
   void setSSID(const String &ssid);
   void setPassword(const String &password);
   void setBrokerIP(const String &ip);
-  // Finalizar la sesión de Preferences
+  // ends preferences session
   void end();
   
 private:

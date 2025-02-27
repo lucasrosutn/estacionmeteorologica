@@ -9,8 +9,7 @@
 #include "storage.h"
 
 Config config;
-extern Storage storage;  // Referencia a la instancia global definida en app.cpp
-
+extern Storage storage;  // Reference to the global instance defined in app.cpp
 
 // Configurates the system initializing the necesary modules 
 void setupSystem() {
@@ -33,7 +32,7 @@ void setupSystem() {
     String brokerIP     = storage.getBrokerIP();
     
     
-    // Imprime la configuración para verificar que se cargó correctamente
+    // Prints the config to verify if it has been loaded succesfully
     Serial.println("Configuración cargada desde NVS:");
     Serial.print("Temp Threshold: "); Serial.println(tempThreshold);
     Serial.print("Hum Threshold: "); Serial.println(humThreshold);
@@ -41,9 +40,6 @@ void setupSystem() {
     Serial.print("Password: "); Serial.println(password);
     Serial.print("Broker IP: "); Serial.println(brokerIP);
   
-    // Aquí puedes usar estos valores para, por ejemplo, conectar a WiFi
-    // WiFi.begin(ssid.c_str(), password.c_str());
-
 
     //--Init wifi
     config.ssid="DIDI_RULZ";
