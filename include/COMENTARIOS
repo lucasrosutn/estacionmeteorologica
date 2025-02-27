@@ -1,0 +1,11 @@
+//Con estos archivos, podrás enviar comandos por el monitor serie 
+//(por ejemplo, T=28.5, H=65.0, S=MiRed, P=MiPass, B=192.168.1.50 o SHOW) 
+//para actualizar y visualizar la configuración almacenada en el NVS a través del módulo Storage. 
+//¿Te queda alguna duda o necesitas algún ajuste adicional?
+
+//Escribiendo T=28.5 se actualizará el umbral de temperatura a 28.5°C.
+//Escribiendo H=65.0 se actualizará el umbral de humedad a 65%.
+//Escribiendo S=MiRedWiFi se actualizará el SSID.
+//Escribiendo P=MiContraseña se actualizará la contraseña.
+//Escribiendo B=192.168.1.50 se actualizará la IP del broker.
+//Escribiendo SHOW se mostrarán los valores actuales.

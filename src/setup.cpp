@@ -6,8 +6,10 @@
 #include "sensor_bmp180.h"
 #include "config.h"
 #include "wifi_.h"
+#include "storage.h"
 
 Config config;
+extern Storage storage;  // Referencia a la instancia global definida en app.cpp
 
 
 // Configurates the system initializing the necesary modules 
@@ -20,9 +22,30 @@ void setupSystem() {
     pinMode(LED_PIN,OUTPUT);
     welcome();
     setupMQTT();            // Initializes mqtt 
+ 
+    pinMode(LED_PIN, OUTPUT);
+
+    storage.begin();
+    float tempThreshold = storage.getTempThreshold();
+    float humThreshold  = storage.getHumThreshold();
+    String ssid         = storage.getSSID();
+    String password     = storage.getPassword();
+    String brokerIP     = storage.getBrokerIP();
     
     
- //--Init wifi
+    // Imprime la configuración para verificar que se cargó correctamente
+    Serial.println("Configuración cargada desde NVS:");
+    Serial.print("Temp Threshold: "); Serial.println(tempThreshold);
+    Serial.print("Hum Threshold: "); Serial.println(humThreshold);
+    Serial.print("SSID: "); Serial.println(ssid);
+    Serial.print("Password: "); Serial.println(password);
+    Serial.print("Broker IP: "); Serial.println(brokerIP);
+  
+    // Aquí puedes usar estos valores para, por ejemplo, conectar a WiFi
+    // WiFi.begin(ssid.c_str(), password.c_str());
+
+
+    //--Init wifi
     config.ssid="DIDI_RULZ";
     config.ssid_pass="0041685240";
     config.ap_ssid=config.device;

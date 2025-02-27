@@ -7,8 +7,13 @@
 #include "mqtt.h"
 #include "config.h"
 #include "led.h"
+#include "storage.h"
+#include "serial_commands.h"
+
 
 extern Config config;
+
+Storage storage;
 
 //--Local variables
 bool wifi_state;
@@ -48,9 +53,20 @@ void runApp() {
     publishHumidity(humidity);
     publishPressure(pressure);
     publishAltitude(altitude);
+
+    // --- Nuevo código: Control del LED único basado en ambas condiciones ---
+    // El LED se enciende solo si la temperatura y la humedad superan sus respectivos umbrales.
+    if (temperature > storage.getTempThreshold() && humidity > storage.getHumThreshold()) {
+        digitalWrite(LED_PIN, HIGH);
+    } else {
+        digitalWrite(LED_PIN, LOW);
+    }
+    // --- Fin del nuevo código ---
     
     // Llama al loop del wifi (si corresponde)
     wifi_state = wifi_loop();
-    
+    // Verifica si hay nuevos comandos desde el puerto serie
+    checkSerialCommands(storage);
+
     delay(2000); // Espera 2 segundos antes de refrescar
 }
