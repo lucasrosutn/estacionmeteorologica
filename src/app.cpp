@@ -69,6 +69,6 @@ void runApp() {
     // checks if there are new commands coming from the serial port
     checkSerialCommands(storage);
 
-    //waits 2 seconds before refreshing/running the main loop again
-    delay(2000);
+    //waits 5 seconds before refreshing/running the main loop again
+    delay(5000);
 }

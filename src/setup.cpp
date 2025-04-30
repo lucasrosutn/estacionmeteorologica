@@ -20,7 +20,7 @@ void setupSystem() {
     initBMP180();           // Initializes BMP180 sensor
     pinMode(LED_PIN,OUTPUT);
     welcome();
-    setupMQTT();            // Initializes mqtt 
+    //setupMQTT();            // Initializes mqtt 
  
     pinMode(LED_PIN, OUTPUT);
 
@@ -46,7 +46,7 @@ void setupSystem() {
     config.ssid_pass="0041685240";
     config.ap_ssid=config.device;
     config.ap_pass="12345678";
-    wifi_init(WIFI_AP_STA);
-    reconnectMQTT();
+    //wifi_init(WIFI_AP_STA);
+    //reconnectMQTT();
 
 }

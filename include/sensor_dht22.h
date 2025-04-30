@@ -8,7 +8,7 @@
 #include <Arduino.h>
 #include <math.h>
 
-#define DHT_PIN 4 // Cambia al pin que estás usando
+#define DHT_PIN 4 // sets pin in use
 #define DHT_TYPE DHT22
 
 
