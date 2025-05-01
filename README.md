@@ -103,7 +103,7 @@ en app.cpp
     //gets the promediated values of temoerature and humidity
     temperature = getAverageTemperature();
     humidity = getAverageHumidity();
-    ```
+```
     
 
     
