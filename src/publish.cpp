@@ -1,4 +1,10 @@
 #include "publish.h"
+extern uint32_t timetopublish;
+
+extern float temperature;
+extern float humidity;
+extern float pressure;
+extern float altitude;
 
 void publishTemperature(float temperature) {
     String payload = String(temperature);
@@ -36,3 +42,15 @@ void publishAltitude(float altitude) {
     }
 }
 
+void publish(void){
+
+    if(millis()-timetopublish>=10000)
+    {
+        publishTemperature(temperature);
+        publishHumidity(humidity);
+        publishPressure(pressure);
+        publishAltitude(altitude);
+        timetopublish=millis();
+    }
+
+}

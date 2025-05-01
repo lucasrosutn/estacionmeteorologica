@@ -18,9 +18,9 @@ void welcome(void){
   void blink_led(uint8_t led_pin, float temperature, float humidity) {
     if (temperature > 23.0 && humidity > 40.0) {  
         digitalWrite(led_pin, HIGH);
-        delay(2000);
+        delay(500);
         digitalWrite(led_pin, LOW);
-        delay(4000);
+        delay(500);
     } else {
         digitalWrite(led_pin, LOW);  // turns off the led if the condition it's not met. 
     }

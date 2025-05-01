@@ -28,16 +28,21 @@ void runApp() {
 
     // refreshes the readings of the sensor to update and refresh the buffer
     updateDHT22();
+
+
     
    
     //gets the promediated values of temoerature and humidity
     temperature = getAverageTemperature();
     humidity = getAverageHumidity();
     
+
     // reads the values from bmp180 sensor, in charge of the values for pressure and altitude
     pressure = readPress();
     altitude = readAlt();
     
+
+
     // blinks led according to the values
     blink_led(LED_PIN, temperature, humidity);
     
@@ -48,12 +53,10 @@ void runApp() {
     
     // shows data on the oled display
     mostrarDatos(temperature, humidity, pressure);
-    
+ 
+   
     // publishes data
-    publishTemperature(temperature);
-    publishHumidity(humidity);
-    publishPressure(pressure);
-    publishAltitude(altitude);
+    publish();
 
     
     //leds will only blink if temp and hum are above their respective threshold levels.
@@ -69,6 +72,5 @@ void runApp() {
     // checks if there are new commands coming from the serial port
     checkSerialCommands(storage);
 
-    //waits 5 seconds before refreshing/running the main loop again
-    delay(5000);
+
 }

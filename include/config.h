@@ -19,11 +19,13 @@ const int OLED_RESET_PIN = -1; // OLED reset, -1 if not in use
 
 //--Structures
 struct Config {
-  const char* device;
-  const char* ssid;
-  const char* ssid_pass;
-  const char* ap_ssid;
-  const char* ap_pass;
+  String device;
+  String ssid;
+  String ssid_pass;
+  String ap_ssid;
+  String ap_pass;
+  String broker_ip;
 };
 
 #endif // CONFIG_H
+

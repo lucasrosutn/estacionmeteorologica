@@ -5,7 +5,8 @@ void checkSerialCommands(Storage &storage) {
     // reads the whole last line and erases blank spaces
     String command = Serial.readStringUntil('\n');
     command.trim();
-
+Serial.println ("commands availables");
+Serial.println (command);
     if (command.startsWith("T=")) {
       // refreshes the temperature threshold
       String valueStr = command.substring(2);

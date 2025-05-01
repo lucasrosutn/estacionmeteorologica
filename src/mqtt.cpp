@@ -3,10 +3,10 @@
 
 // set of the initial configuration for mqtt
 
-#define MQTT_SERVER "192.168.68.101"     
+#define MQTT_SERVER "192.168.1.20"     
 #define MQTT_PORT 1883
-#define MQTT_USER "estacionmeteorologica"
-#define MQTT_PASSWORD "estacionmeteorologica"
+#define MQTT_USER ""
+#define MQTT_PASSWORD ""
 
 
 WiFiClient espClient;

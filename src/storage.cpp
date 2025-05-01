@@ -26,7 +26,8 @@ String Storage::getPassword() {
 }
 
 String Storage::getBrokerIP() {
-  return preferences.getString("broker", "192.168.1.100");
+  //return preferences.getString("broker", "192.168.1.20");
+  return "192.168.1.20";
 }
 
 void Storage::setTempThreshold(float value) {
