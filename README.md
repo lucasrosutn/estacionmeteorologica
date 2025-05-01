@@ -28,12 +28,12 @@ A nivel local, el led onboard parpadea, generando asi una alarma local de tipo v
 ## Instrucciones para el usuario
 ### Comandos a ingresar a través del puerto serie
 
-//Escribiendo T=28.5 se actualizará el umbral de temperatura a 28.5°C.
-//Escribiendo H=65.0 se actualizará el umbral de humedad a 65%.
-//Escribiendo S=MiRedWiFi se actualizará el SSID.
-//Escribiendo P=MiContraseña se actualizará la contraseña.
-//Escribiendo B=192.168.1.50 se actualizará la IP del broker.
-//Escribiendo SHOW se mostrarán los valores actuales.
+- Escribiendo T=28.5 se actualizará el umbral de temperatura a 28.5°C.
+- Escribiendo H=65.0 se actualizará el umbral de humedad a 65%.
+- Escribiendo S=MiRedWiFi se actualizará el SSID.
+- Escribiendo P=MiContraseña se actualizará la contraseña.
+- Escribiendo B=192.168.1.50 se actualizará la IP del broker.
+- Escribiendo SHOW se mostrarán los valores actuales.
 
 ## Funcionamiento del código
 ### SETUP
@@ -77,7 +77,7 @@ void setupSystem() {
 }
 ```
 
-### Main
+### MAIN
 Es el archivo principal. Se encarga de correr el setup y luego el archivo app donde se encuentra la lógica principal de la aplicación.
 ```cpp
 // Initial configuration of the programm
@@ -90,7 +90,7 @@ void loop() {
     runApp(); // Executes the main logic of the app
 }
 ```
-### App
+### APP
 Es el archivo que contiene la lógica principal de la aplicación. 
 Lo que aquí se realiza es el llamado a distintas funciones cuyo código se encuentra escrito en otros archivos para facilitar el mantenimiento y garantizar el orden de la aplicación.
 Por ejemplo, en App.cpp se llama a los datos de humedad y temperatura obtenidos por el DHT22 pero que ya han sido procesados (promediados) en el archivo sensor_dht22.cpp
@@ -190,20 +190,8 @@ float readHumidity() {
     return dht.readHumidity(); // gives back relative humidity in percentage %
 }
 ```
-
+La estructura previa se repite para cada una de las funciones presentes en el inicio y el bucle principal. No se explicitan para no hacer mas engorrosa la presente documentación. Todas las funciones o declaraciones de variables se encuentrarn debidamente comentadas en idioma inglés a lo largo de toda la estructura del código.
     
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 ## Requerimientos
@@ -216,9 +204,10 @@ float readHumidity() {
 ## Configuración
 1. **Clonar el repositorio:**
    ```sh
-   git clone https://github.com/victoriafaiola/Sistema-de-Ventilacion.git
+   git clone https://github.com/lucasrosutn/estacionmeteorologica.git
    ```
-2. **Compilar y subir el firmware al ESP32:**
+2. **Compilar y flashear el firmware al ESP32:**
+
 3. **Configurar Node-RED:**
    - Verificar la conexion wifi.
    - Verificarr la conexion con el broker Mosquitto.
@@ -227,6 +216,5 @@ float readHumidity() {
 
 ## Dashboard en Node-RED
 La interfaz permite:
-- Visualizar temperatura y humedad en tiempo real.
-- Visualizar la evolución de temperatura y humedad.
-- Visualizar el estado del ventilador.
+- Visualizar los valores de temperatura, humedad, presión y altitud en tiempo real.
+- Visualizar la evolución de temperatura a lo largo del tiempo en un gráfico
