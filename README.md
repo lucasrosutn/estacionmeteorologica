@@ -23,6 +23,7 @@ El desarrollo fue realizado bajo un enfoque modular, orientado a facilitar la co
 - Sensor DHT22 (temperatura y humedad)
 - Sensor BMP180 (presión atmosférica)
 - Pantalla OLED 0.96" I2C (opcional, manejada mediante U8g2)
+- Protoboard, cables y fuentes de alimentación
 
 ### Software
 
@@ -128,4 +129,26 @@ El esquema fue desarrollado con software profesional (KiCad o similar) para faci
 
 1. Clonar el repositorio:
 
-go
+git clone https://github.com/lucasrosutn/estacionmeteorologica.git
+
+
+2. Abrir el proyecto con PlatformIO en Visual Studio Code.
+3. Instalar las librerías definidas en el archivo `platformio.ini`.
+4. Configurar los parámetros iniciales en `config.h` (pines, credenciales WiFi, topic MQTT).
+5. Realizar el cableado según el esquema de conexión.
+6. Compilar y cargar el programa en el ESP32.
+7. Verificar el funcionamiento mediante monitor serial y suscripción MQTT.
+
+## Notas adicionales
+
+- El broker MQTT utilizado es **Mosquitto**. El sistema puede conectarse a cualquier servidor MQTT compatible configurado previamente.
+- No se implementa almacenamiento local de históricos. Las variables de configuración persistente se almacenan únicamente en NVS.
+- El sistema admite modificaciones futuras incorporando nuevos sensores o ampliando las funcionalidades de comunicación.
+
+## Licencia
+
+Este proyecto se presenta exclusivamente con fines académicos, bajo las normas de la institución.
+
+## Autor
+
+Lucas Rosemberg - Año 2025
