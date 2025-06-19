@@ -2,87 +2,130 @@
 
 ## Descripción
 
-Este proyecto consiste en el desarrollo de una estación meteorológica basada en un microcontrolador **ESP32**. Permite la medición de temperatura, humedad y presión atmosférica, mostrando los datos en tiempo real y permitiendo su registro o visualización remota. El desarrollo se realizó como trabajo práctico para la asignatura universitaria correspondiente, aplicando programación modular y buenas prácticas de desarrollo embebido.
+Este proyecto consiste en el desarrollo de una estación meteorológica embebida basada en el microcontrolador ESP32. Permite medir temperatura, humedad relativa y presión atmosférica, publicando los datos en tiempo real mediante el protocolo MQTT hacia un broker remoto, sin almacenamiento local de los registros históricos. Además, incorpora persistencia de parámetros de configuración mediante el sistema de almacenamiento no volátil (NVS) del ESP32, permitiendo modificar valores de configuración de forma dinámica sin necesidad de recompilar el firmware.
+
+El desarrollo fue realizado bajo un enfoque modular, orientado a facilitar la comprensión, el mantenimiento y la escalabilidad del código.
 
 ## Objetivos
 
-- Aplicar conocimientos de sensores, comunicación y sistemas embebidos.
-- Desarrollar código modular y escalable.
-- Implementar adquisición de datos ambientales en tiempo real.
-- Visualizar los datos localmente (pantalla OLED) o vía web.
-- Documentar el proyecto de forma profesional, orientado a programadores.
+- Implementar una arquitectura modular para adquisición de datos ambientales.
+- Integrar sensores de temperatura, humedad y presión.
+- Transmitir datos de mediciones mediante protocolo MQTT.
+- Implementar almacenamiento de parámetros persistentes en NVS.
+- Permitir la modificación de parámetros operativos mediante comandos por puerto serie.
+- Documentar el proyecto de forma técnica para programadores.
 
 ## Materiales utilizados
 
 ### Hardware
 
-- Placa **ESP32 DevKit**
-- Sensor **DHT22** (temperatura y humedad)
-- Sensor **BMP180** (presión)
-- Display **OLED 0.96" I2C** (opcional)
-- Protoboard y cables de conexión
+- Placa de desarrollo ESP32 DevKit
+- Sensor DHT22 (temperatura y humedad)
+- Sensor BMP180 (presión atmosférica)
+- Pantalla OLED 0.96" I2C (opcional, manejada mediante U8g2)
 
 ### Software
 
-- Plataforma: **PlatformIO (Visual Studio Code)** o **Arduino IDE**
-- Lenguaje: **C++**
+- Entorno de desarrollo: PlatformIO (Visual Studio Code)
+- Lenguaje: C++
 - Librerías utilizadas:
-  - `Adafruit DHT Sensor Library`
-  - `Adafruit Unified Sensor`
-  - `Adafruit BMP180 Library`
-  - `Adafruit SSD1306` (para el OLED)
-  - `WiFi`
+  - `Adafruit DHT Sensor Library` (v1.4.6)
+  - `U8g2` (v2.34.18)
+  - `Adafruit BMP085 Library` (v1.2.4)
+  - `ArduinoJson` (v7.3.0)
+  - `PubSubClient` (v2.8.0)
 
-## 🔎 Descripción del código
+## Descripción general del sistema
 
-El código está organizado en módulos independientes para facilitar su comprensión, mantenimiento y ampliación:
+El sistema se inicia configurando los periféricos de hardware, la conexión WiFi, la inicialización del cliente MQTT y la recuperación de parámetros persistentes desde la NVS. Posteriormente entra en un bucle principal donde realiza periódicamente las siguientes operaciones:
 
-- **main.cpp**  
-  Inicializa sensores, display, Wi-Fi, y ejecuta el ciclo principal de lectura de datos.
+1. Lectura de sensores (DHT22 y BMP180).
+2. Publicación de los datos adquiridos a través de MQTT.
+3. Actualización de la pantalla OLED (si está habilitada).
+4. Verificación de comandos entrantes por puerto serie para ajuste de parámetros.
+5. Verificación de conexión WiFi y reconexión automática si es necesario.
+6. Mantenimiento de la conexión MQTT activa.
 
-- **sensor_dht22.cpp / sensor_dht22.h**  
-  Gestiona la lectura de temperatura y humedad desde el sensor DHT22.
+## Descripción del código fuente
 
-- **sensor_bmp180.cpp / sensor_bmp180.h**  
-  Gestiona la lectura de presión atmosférica desde el sensor BMP180.
+El proyecto está dividido en módulos funcionales claramente separados:
 
-- **oled_display.cpp / oled_display.h** *(opcional)*  
-  Muestra los datos en tiempo real en la pantalla OLED.
+### main.cpp
 
-- **wifi.cpp / wifi.h** *(opcional)*  
-  Maneja la conexión Wi-Fi y el servidor web de visualización.
+- Inicializa el hardware general.
+- Gestiona la conexión WiFi.
+- Inicializa el sistema de persistencia mediante NVS.
+- Configura el cliente MQTT.
+- Controla el bucle principal de adquisición y publicación de datos.
 
-- **config.h**  
-  Centraliza parámetros de configuración: pines, credenciales, intervalos de muestreo, etc.
+### sensor_dht22.cpp / sensor_dht22.h
 
-### Flujo general de funcionamiento
+- Inicializa el sensor DHT22.
+- Realiza las lecturas de temperatura y humedad.
+- Devuelve los valores en variables globales utilizadas por el resto del sistema.
 
-1. El ESP32 inicia el sistema.
-2. Inicializa los sensores.
-3. Establece la conexión Wi-Fi (si corresponde).
-4. Ejecuta el bucle principal donde:
-   - Se leen los sensores.
-   - Se actualizan variables.
-   - Se actualiza el display OLED y/o se actualizan los datos en el servidor web.
+### sensor_bmp180.cpp / sensor_bmp180.h
 
-### Consideraciones para programadores
+- Inicializa el sensor BMP180.
+- Realiza las lecturas de presión atmosférica.
+- Devuelve el valor de presión actualizado.
 
-- El código es modular y permite agregar fácilmente nuevos sensores.
-- Los parámetros de configuración están centralizados en `config.h`.
-- Las interfaces de sensores son independientes entre sí.
-- El código es portable a otros microcontroladores compatibles.
+### oled_display.cpp / oled_display.h (opcional)
 
-## 📊 Esquema de conexión
+- Inicializa la pantalla OLED.
+- Visualiza las últimas lecturas de los sensores en pantalla.
+- Utiliza la librería U8g2 para manejo gráfico.
 
-Se presenta a continuación el diagrama de conexión de los componentes:
+### wifi.cpp / wifi.h
 
-![Esquema de conexión](assets/esquema.png)
+- Configura la conexión WiFi.
+- Implementa lógica de reconexión automática en caso de pérdida de enlace.
 
-> *Nota: El esquema debe generarse con herramientas como Fritzing, EasyEDA o similar, y ubicarse en la carpeta `assets/`.*
+### mqtt.cpp / mqtt.h
 
-## 🚀 Instalación
+- Inicializa el cliente MQTT mediante la librería PubSubClient.
+- Publica periódicamente los datos adquiridos hacia el broker MQTT configurado (Mosquitto).
+- Mantiene la conexión activa mediante función de reconexión automática.
+
+### serial_commands.cpp / serial_commands.h
+
+- Interpreta comandos ingresados por puerto serie.
+- Permite modificar dinámicamente los parámetros de configuración (umbral, intervalo de muestreo, etc.).
+- Actualiza los valores persistentes en NVS tras cada modificación.
+
+### storage.cpp / storage.h
+
+- Implementa la lectura y escritura de parámetros en el sistema de persistencia no volátil (NVS).
+- Garantiza la conservación de configuraciones incluso tras reinicios del sistema.
+
+### config.h
+
+- Define constantes generales de configuración.
+- Centraliza pines, credenciales de red, parámetros iniciales y estructura del sistema.
+
+## Flujo de funcionamiento detallado
+
+1. Al iniciar, el sistema recupera desde NVS los parámetros previamente almacenados.
+2. Establece la conexión WiFi con los parámetros definidos.
+3. Inicializa los sensores conectados.
+4. Se conecta al broker MQTT.
+5. En el bucle principal:
+   - Lee los sensores DHT22 y BMP180.
+   - Publica los valores de temperatura, humedad y presión mediante MQTT.
+   - Si corresponde, actualiza la visualización en la pantalla OLED.
+   - Monitorea comandos por puerto serie para posibles ajustes de parámetros.
+6. Si se produce una desconexión de red o broker MQTT, el sistema intenta reconectar automáticamente.
+
+## Esquema de conexión
+
+Se adjunta el diagrama de conexión física de los sensores al ESP32 en el archivo:
+
+`assets/esquema.png`
+
+El esquema fue desarrollado con software profesional (KiCad o similar) para facilitar su interpretación y replicación.
+
+## Instalación
 
 1. Clonar el repositorio:
 
-```bash
-git clone https://github.com/lucasrosutn/estacionmeteorologica.git
+go
