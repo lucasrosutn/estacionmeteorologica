@@ -119,11 +119,7 @@ El proyecto está dividido en módulos funcionales claramente separados:
 
 ## Esquema de conexión
 
-Se adjunta el diagrama de conexión física de los sensores al ESP32 en el archivo:
-
-`assets/esquema.png`
-
-El esquema fue desarrollado con software profesional (KiCad o similar) para facilitar su interpretación y replicación.
+pendiente
 
 ## Instalación
 
