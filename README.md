@@ -119,7 +119,8 @@ El proyecto está dividido en módulos funcionales claramente separados:
 
 ## Esquema de conexión
 
-pendiente
+![Esquemático del circuito](./figures/esquematico.png)
+
 
 ## Instalación
 
@@ -140,6 +141,26 @@ git clone https://github.com/lucasrosutn/estacionmeteorologica.git
 - El broker MQTT utilizado es **Mosquitto**. El sistema puede conectarse a cualquier servidor MQTT compatible configurado previamente.
 - No se implementa almacenamiento local de históricos. Las variables de configuración persistente se almacenan únicamente en NVS.
 - El sistema admite modificaciones futuras incorporando nuevos sensores o ampliando las funcionalidades de comunicación.
+
+## Configuración vía puerto serie
+
+El sistema permite configurar parámetros persistentes al iniciar por el puerto serie. A continuación, se listan los comandos disponibles:
+
+- `ssid:<NOMBRE_RED>` – Configura el nombre de la red WiFi.
+- `pass:<CLAVE>` – Configura la contraseña de la red WiFi.
+- `broker:<IP_BROKER>` – Dirección IP del broker MQTT.
+- `topic:<TOPIC_MQTT>` – Tópico MQTT de publicación.
+- `nombre:<NOMBRE_ESTACION>` – Nombre identificador del nodo.
+
+### Ejemplo de uso:
+
+```plaintext
+ssid:MiRedWiFi
+pass:miclave123
+broker:192.168.0.100
+topic:sensores/estacion1
+nombre:estacionLucas
+
 
 ## Licencia
 
