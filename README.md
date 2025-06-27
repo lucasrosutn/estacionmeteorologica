@@ -154,12 +154,11 @@ El sistema permite configurar parámetros persistentes al iniciar por el puerto 
 
 ### Ejemplo de uso:
 
-```plaintext
 ssid:MiRedWiFi
 pass:miclave123
 broker:192.168.0.100
 topic:sensores/estacion1
-nombre:estacionLucas```
+nombre:estacionLucas
 
 ## Licencia
 
