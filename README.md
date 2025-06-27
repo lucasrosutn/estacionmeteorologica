@@ -146,20 +146,13 @@ git clone https://github.com/lucasrosutn/estacionmeteorologica.git
 
 El sistema permite configurar parámetros persistentes al iniciar por el puerto serie. A continuación, se listan los comandos disponibles:
 
-- `ssid:<NOMBRE_RED>` – Configura el nombre de la red WiFi.
-- `pass:<CLAVE>` – Configura la contraseña de la red WiFi.
-- `broker:<IP_BROKER>` – Dirección IP del broker MQTT.
-- `topic:<TOPIC_MQTT>` – Tópico MQTT de publicación.
-- `nombre:<NOMBRE_ESTACION>` – Nombre identificador del nodo.
+```Escribiendo T=28.5 se actualizará el umbral de temperatura a 28.5°C.
+Escribiendo H=65.0 se actualizará el umbral de humedad a 65%.
+Escribiendo S=MiRedWiFi se actualizará el SSID.
+Escribiendo P=MiContraseña se actualizará la contraseña.
+Escribiendo B=192.168.1.50 se actualizará la IP del broker.
+Escribiendo SHOW se mostrarán los valores actuales.
 
-## Ejemplo de uso:
-
-```
-ssid:MiRedWiFi
-pass:miclave123
-broker:192.168.0.100
-topic:sensores/estacion1
-nombre:estacionLucas
 ```
 ## Licencia
 
