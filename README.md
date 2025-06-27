@@ -152,7 +152,7 @@ El sistema permite configurar parámetros persistentes al iniciar por el puerto 
 - `topic:<TOPIC_MQTT>` – Tópico MQTT de publicación.
 - `nombre:<NOMBRE_ESTACION>` – Nombre identificador del nodo.
 
-### Ejemplo de uso:
+## Ejemplo de uso:
 
 ssid:MiRedWiFi
 pass:miclave123
